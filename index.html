@@ -73,32 +73,6 @@ h2{font-size:23px;line-height:1.35;letter-spacing:-.4px;font-weight:650;margin-b
 @media(max-width:600px){.lab-controls{grid-template-columns:1fr}.graph-wrap svg text{font-size:19px}}
 @media(max-width:380px){.shell{padding-left:16px;padding-right:16px}.brand-name{font-size:17px}.comparison{display:block}.comparison>div+div{border-left:0;border-top:1px solid var(--line)}.lab-result{align-items:flex-start}}
 @media print{body{font-size:11pt;line-height:1.5}.topbar,.navband,.topics-panel,.lesson-footer,.site-footer,.skip,.outline-actions,.sample-card .button,.check button{display:none!important}.shell{padding:0;max-width:none}.overview,.reader-grid{padding:0;display:block}.reader-content{max-width:none}.overview-intro{display:block}.sample-card{margin:20px 0}.section-row{break-inside:avoid;padding:10px 0}.lesson-block,.comparison,.lab,.check,.takeaway{break-inside:avoid}.answer[hidden]{display:block!important}.answer:before{content:"Self-check answer";font-weight:bold;display:block;margin-bottom:8px}.lab-controls input{display:none}h1,.reader-content h1{font-size:24pt}.row-description{font-size:10pt}.graph-wrap svg{max-height:170px}a{text-decoration:none}.preview-note{font-size:10pt}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* SECTION1_STYLES */
 .lab,.wave-figure,.wave-legend{--lab-bg:rgb(247,247,247);--lab-card:rgb(255,255,255);--lab-line:rgb(212,212,212);--lab-green:#0891b2;--lab-gold:#b77900}
 .lab,.wave-figure,.wave-legend{--chart-ink:rgb(38,38,38);--chart-muted:rgb(100,100,100);--chart-axis:rgb(163,163,163);--chart-grid:rgb(229,229,229)}
 .s1-chart{font-family:'Assistant',Arial,sans-serif;overflow:visible}.s1-chart .chart-grid{fill:none;stroke:var(--chart-grid);stroke-width:.8}.s1-chart .chart-axis{fill:none;stroke:var(--chart-axis);stroke-width:1;stroke-linecap:round;stroke-linejoin:round}.s1-chart .chart-signal{stroke-linecap:round;stroke-linejoin:round}.s1-chart .chart-labels{font-size:14px;fill:var(--chart-muted)}.s1-chart .chart-axis-title{font-weight:600;fill:var(--chart-ink)}.lab .energy-chart{max-width:560px;margin:0 auto 16px}
@@ -114,8 +88,6 @@ h2{font-size:23px;line-height:1.35;letter-spacing:-.4px;font-weight:650;margin-b
 
 @media(max-width:760px){.flow-strip{flex-wrap:wrap}.flow-strip>div{flex:1 1 38%}.flow-strip>b{display:none}.analogy-grid{grid-template-columns:1fr;gap:12px}.table-wrap table{font-size:13px}th,td{padding:10px 9px}.wave-figure{padding:12px}.equation{overflow-wrap:anywhere}.lab-result strong{font-size:25px}.graph-wrap svg text{font-size:14px}.s1-chart .chart-labels{font-size:15px}}
 @media print{.self-check summary{border:0;padding:0;font-weight:600}.self-check summary:after{display:none}.self-check .answer{display:block!important}.flow-strip>div,.example{break-inside:avoid}.source-note{font-size:9pt}.lab-controls select{border:0;padding:0}.wave-figure,.table-wrap{break-inside:avoid}.lesson-block{break-inside:auto}.check{break-inside:avoid}}
-/* /SECTION1_STYLES */
-
 </style>
 <!-- EMBEDDED FONTS START -->
 <!--
@@ -360,7 +332,7 @@ h1,h2,h3,h4,h5,h6,.brand-name,.row-title,.sample-card strong,.topics-panel summa
 </style>
 <!-- EMBEDDED FONTS END -->
 <style id="sidebar-styles">
-/* Sideways topic navigation; the root HTML owns the shared UI shell. */
+/* Topic sidebar: a collapsible column beside the lesson, and a drawer on narrow screens. */
 .reader-grid{--topics-width:245px;--topics-gap:54px;--rail:40px;grid-template-columns:var(--topics-width) minmax(0,1fr);column-gap:var(--topics-gap);transition:grid-template-columns .2s ease,column-gap .2s ease}
 .reader-grid[data-topics=closed]{grid-template-columns:var(--rail) minmax(0,1fr);column-gap:32px}
 .reader-content{width:100%;max-width:780px}
@@ -890,14 +862,6 @@ sections.forEach((s,i)=>{
  const row=document.createElement('a');row.className='section-row';row.href='#s'+(i+1)+'-t1';
  row.innerHTML='<span class="row-number">'+String(i+1).padStart(2,'0')+'</span><span><span class="row-title">'+esc(s.title)+'</span><span class="row-description">'+esc(s.description)+'</span></span><span class="row-meta">'+s.topics.length+' topics <span class="pill">'+(s.topics.every((_,ti)=>byId('lesson-s'+(i+1)+'-t'+(ti+1)))?'Available':'Outline')+'</span></span><span class="arrow" aria-hidden="true">→</span>';byId('sectionRows').append(row);
 });
-
-
-
-
-
-
-
-
 
 function render(){
  const id=location.hash.slice(1),item=flat.find(t=>t.id===id),isOverview=!item;
